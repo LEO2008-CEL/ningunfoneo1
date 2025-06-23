@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Alto al Ningunfoneo! - Combate el Phubbing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #667eea;
+            color: white;
+            padding: 1.5em 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 0.5em;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2em auto;
+            padding: 0 1.5em;
+        }
+
+        section {
+            background-color: white;
+            padding: 2em;
+            margin-bottom: 1.5em;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #4a5568;
+            font-size: 2em;
+            margin-bottom: 1em;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5em;
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.8em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #48bb78;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5em;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #38a169;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5em 0;
+            margin-top: 2em;
+            background-color: #667eea;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* JavaScript dinámico */
+        #consecuencias-lista li {
+            cursor: pointer;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            transition: color 0.2s ease;
+        }
+
+        #consecuencias-lista li:last-child {
+            border-bottom: none;
+        }
+
+        #consecuencias-lista li:hover {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 80%;
+            max-width: 450px;
+            text-align: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .popup h3 {
+            color: #4a5568;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .popup p {
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .popup .close-button {
+            background-color: #e53e3e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup .close-button:hover {
+            background-color: #c53030;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            section {
+                padding: 1.5em;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+        }
+        
+img{
+    max-width: 100%;height: auto;
+    display: block;  
+    margin: 1.5em auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Alto al Ningunfoneo!</h1>
+        <p>Entiende y combate el **Phubbing** para mejorar tus relaciones</p>
+    </header>
+
+    <div class="container">
+        <section id="que-es">
+            <h2>¿Qué es el Ningunfoneo (Phubbing)?</h2>
+            <p>El **ningunfoneo**, también conocido por su término en inglés **phubbing** (phone + snubbing), es el acto de ignorar a una persona en una interacción social por prestar atención al teléfono móvil. Es una práctica cada vez más común que, aunque parezca inofensiva, tiene consecuencias significativas en nuestras relaciones.</p>
+            <p>Imagina estar en una conversación con un amigo, familiar o pareja, y de repente, su mirada se desvía hacia la pantalla de su smartphone, interrumpiendo el flujo de la comunicación y haciéndote sentir invisible. Eso es ningunfoneo.</p>
+        <img src="descarga (1).jpeg" alt="">
+        </section>
+
+        <section id="por-que-ocurre">
+            <h2>¿Por qué ocurre el Ningunfoneo?</h2>
+            <p>El ningunfoneo no siempre es intencional. Algunas de las razones comunes detrás de este comportamiento incluyen:</p>
+            <ul>
+                <li>**Adicción o dependencia al teléfono:** La necesidad constante de revisar notificaciones, redes sociales o mensajes.</li>
+                <li>**Miedo a perderse algo (FOMO):** La ansiedad de no estar al tanto de lo que sucede en el mundo digital.</li>
+                <li>**Hábito:** Una costumbre inconsciente desarrollada con el uso frecuente del móvil.</li>
+                <li>**Falta de conciencia:** Muchas personas no son conscientes del impacto negativo que su comportamiento tiene en los demás.</li>
+                <li>**Escape o aburrimiento:** Utilizar el teléfono para evitar una conversación incómoda o simplemente por falta de interés momentáneo.</li>
+            </ul>
+            <img src="descarga.jpeg" alt="">
+        </section>
+
+        <section id="consecuencias">
+            <h2>Consecuencias del Ningunfoneo</h2>
+            <p>El ningunfoneo puede tener efectos perjudiciales en nuestras interacciones y bienestar emocional:</p>
+            <ul id="consecuencias-lista">
+                <li data-title="Deterioro de las Relaciones" data-description="Reduce la calidad de las interacciones cara a cara, generando resentimiento y distancia emocional en amistades, relaciones de pareja y familiares.">Deterioro de las Relaciones</li>
+                <li data-title="Sentimiento de Exclusión" data-description="La persona ningunfoneada puede sentirse ignorada, devaluada e insignificante, afectando su autoestima y confianza en la relación.">Sentimiento de Exclusión</li>
+                <li data-title="Disminución de la Calidad de la Comunicación" data-description="Interrumpe el flujo de la conversación, dificulta la escucha activa y la comprensión mutua, llevando a malentendidos.">Disminución de la Calidad de la Comunicación</li>
+                <li data-title="Aumento de Conflictos" data-description="Puede generar discusiones y tensiones, ya que el phubbing es percibido como una falta de respeto o interés.">Aumento de Conflictos</li>
+                <li data-title="Contagio del Comportamiento" data-description="Quienes son ningunfoneados a menudo terminan adoptando el mismo comportamiento, creando un ciclo de desconexión.">Contagio del Comportamiento</li>
+            </ul>
+<img src="images (1).jpeg" alt="">
+        </section>
+
+        <section id="como-evitarlo">
+            <h2>¿Cómo Evitar el Ningunfoneo?</h2>
+            <p>Aquí tienes algunas estrategias prácticas para reducir el ningunfoneo en tu vida y fomentar conexiones más significativas:</p>
+            <ul>
+                <li>**Establece "Zonas Libres de Teléfono":** Acuerda no usar el móvil en la mesa durante las comidas, en reuniones familiares o en momentos específicos con amigos.</li>
+                <li>**Guarda el Teléfono:** Cuando estés con alguien, pon tu teléfono en modo silencio y guárdalo en tu bolsillo o bolso. Fuera de la vista, fuera de la mente.</li>
+                <li>**Sé Consciente:** Antes de revisar tu teléfono, pregúntate si es realmente urgente o si puede esperar. Valora la interacción presente.</li>
+                <li>**Comunícate Abiertamente:** Si te sientes ningunfoneado, exprésalo de forma amable y asertiva a la otra persona. Propón soluciones juntos.</li>
+                <li>**Modera las Notificaciones:** Desactiva notificaciones innecesarias que te distraen constantemente.</li>
+                <li>**Practica la Escucha Activa:** Concéntrate en la persona que tienes enfrente, haz contacto visual y participa activamente en la conversación.</li>
+            </ul>
+            <p>Pequeños cambios pueden generar grandes diferencias en la calidad de tus relaciones. ¡Prioriza las conexiones humanas!</p>
+            <img src="images.jpeg" alt="">
+            <a href="#" class="cta-button" id="compromisoBtn">¡Me Comprometo a Reducir el Ningunfoneo!</a>
+            
+        </section>
+    </div>
+
+    <footer>
+        <p>Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="overlay" id="popupOverlay"></div>
+    <div class="popup" id="consecuenciaPopup">
+        <h3 id="popupTitle"></h3>
+        <p id="popupDescription"></p>
+        <button class="close-button" id="closePopup">Cerrar</button>
+    </div>
+
+    <div class="popup" id="compromisoPopup">
+        <h3>¡Gracias por tu compromiso!</h3>
+        <p>Has dado un paso importante para mejorar tus interacciones. Recuerda que la presencia plena es el mejor regalo que puedes dar.</p>
+        <button class="close-button" id="closeCompromisoPopup">Entendido</button>
+    </div>
+
+    <script>
+        // JavaScript para la interactividad
+
+        // Manejo del popup de consecuencias
+        const consecuenciasLista = document.getElementById('consecuencias-lista');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const consecuenciaPopup = document.getElementById('consecuenciaPopup');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupDescription = document.getElementById('popupDescription');
+        const closePopup = document.getElementById('closePopup');
+
+        consecuenciasLista.addEventListener('click', (event) => {
+            const listItem = event.target.closest('li');
+            if (listItem && listItem.hasAttribute('data-title')) {
+                popupTitle.textContent = listItem.dataset.title;
+                popupDescription.textContent = listItem.dataset.description;
+                popupOverlay.style.display = 'block';
+                consecuenciaPopup.style.display = 'block';
+            }
+        });
+
+        closePopup.addEventListener('click', () => {
+            popupOverlay.style.display = 'none';
+            consecuenciaPopup.style.display = 'none';
+        });
+
+        // Cerrar popup al hacer clic en el overlay
+        popupOverlay.addEventListener('click', () => {
+            popupOverlay.style.display = 'none';
+            consecuenciaPopup.style.display = 'none';
+            compromisoPopup.style.display = 'none'; // Asegúrate de cerrar ambos
+        });
+
+        // Manejo del popup de compromiso
+        const compromisoBtn = document.getElementById('compromisoBtn');
+        const compromisoPopup = document.getElementById('compromisoPopup');
+        const closeCompromisoPopup = document.getElementById('closeCompromisoPopup');
+
+        compromisoBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Evita que el enlace salte a la parte superior de la página
+            popupOverlay.style.display = 'block';
+            compromisoPopup.style.display = 'block';
+        });
+
+        closeCompromisoPopup.addEventListener('click', () => {
+            popupOverlay.style.display = 'none';
+            compromisoPopup.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
